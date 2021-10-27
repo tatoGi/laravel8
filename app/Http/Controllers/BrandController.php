@@ -7,7 +7,7 @@ use App\Models\Brand;
 use App\Models\Multipic;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;  
-use image;
+use Image;
 use Auth;
 
 
@@ -23,7 +23,7 @@ class BrandController extends Controller
         return view('admin.brand.index' , compact('brands'));
     }
     public function StoreBrand(Request $request){
-        
+    
         $validatedData = $request->validate([
             'brand_name' => 'required|unique:brands|min:4',
             'brand_image' => 'required|mimes:jpg,jpeg,png',
@@ -34,18 +34,22 @@ class BrandController extends Controller
             'brand_image.min' => 'Brand Longer  then 4 Characters',
         ]);
 
-        $brand_image = $request->file('brand_image');
 
-        $name_gen = hexdec(uniqid());
-        $img_ext = strtolower($brand_image->getClientOriginalExtension());
-        $img_name = $name_gen. '.' .$img_ext;
-        $up_location = 'image/brand/';
-        $last_img = $up_location.$img_name;
-        $brand_image->move($up_location,$img_name);
 
-        // $name_gen = hexdec(uniqid()).'.'.$brand_image->getClientOriginalExtension();
-        // Image::make($brand_image)->resize(300,200)->save('image/brand/'.$name_gen);
-        // $last_img = 'image/brand/'.$name_gen;
+
+
+        // $brand_image = $request->file('brand_image');
+
+        // $name_gen = hexdec(uniqid());
+        // $img_ext = strtolower($brand_image->getClientOriginalExtension());
+        // $img_name = $name_gen. '.' .$img_ext;
+        // $up_location = 'image/brand/';
+        // $last_img = $up_location.$img_name;
+        // $brand_image->move($up_location,$img_name);
+
+        $name_gen = hexdec(uniqid()).'.'.$brand_image->getClientOriginalExtension();
+        Image::make($brand_image)->resize(300,200)->save('image/brand/'.$name_gen);
+        $last_img = 'image/brand/'.$name_gen;
 
         Brand::insert([
             'brand_name' => $request-> brand_name,

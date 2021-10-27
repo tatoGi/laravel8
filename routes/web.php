@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\support\facedes\SoftDelete;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,8 @@ use App\Http\Controllers\BrandController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $brands = DB::table('brands')->get();
+    return view('home', compact('brands'));
 });
 
 Route::get('/home', function () {
@@ -59,8 +61,10 @@ Route::get('/multi/image', [BrandController::class, 'Multpic'])->name('multi.Ima
 
 Route::post('/multi/add', [BrandController::class, 'StoreImg'])->name('store.image');
 
-
-
+// Admin all route //
+Route::get('/home/slider', [HomeController::class, 'Homslider'])->name('home.slider');
+Route::get('/add/slider', [HomeController::class, 'addslider'])->name('add.slider');
+Route::post('/store/slider', [HomeController::class, 'storeslider'])->name('store.slider');
 
 
 

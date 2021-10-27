@@ -1,3 +1,4 @@
+
 <aside class="left-sidebar bg-sidebar">
           <div id="sidebar" class="sidebar sidebar-with-footer">
             <!-- Aplication Brand -->
@@ -44,8 +45,14 @@
                         
                           
                             <li  class="active" >
-                              <a class="sidenav-item-link" href="index.html">
-                                <span class="nav-text">Home About</span>
+                              <a class="sidenav-item-link" href="{{ route('home.slider')}}">
+                                <span class="nav-text">Slider</span>
+                                
+                              </a>
+                            </li>
+                            <li  class="active" >
+                              <a class="sidenav-item-link" href="{{ route('home.slider')}}">
+                                <span class="nav-text">Home about</span>
                                 
                               </a>
                             </li>
