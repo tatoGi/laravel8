@@ -4,8 +4,8 @@
 <div class="py-12">
        <div class="container">
            <div class="row">
-            <h2>Home slider</h2>
-        <a href="{{route('add.slider')}}"><button class="btn btn-info">Add Slider</button> </a>
+            <h2>Home About</h2>
+        <a href="{{route('add.slider')}}"><button class="btn btn-info">Add About</button> </a>
 
               <div class="col-md-12">
               @if( session('success'))
@@ -22,7 +22,7 @@
 
 
               <div class="card-header">
-                All Slider
+                All About Data
 
               
 
@@ -30,9 +30,9 @@
   <thead>
     <tr>
       <th scope="col" width="15%">SL No</th>
-      <th scope="col" width="5%">Slider title</th>
-      <th scope="col" width="15%">Description</th>
-      <th scope="col" width="10%">Image</th>
+      <th scope="col" width="5%">Home title</th>
+      <th scope="col" width="15%">Short Description</th>
+      <th scope="col" width="10%">Long Description</th>
       <th scope="col" width="10%">Action</th>
     </tr>
   </thead>
@@ -40,19 +40,19 @@
 
       @php($i = 1)
 
-    @foreach($sliders as $slider)
+    @foreach($homeabout as $about)
     <tr>
       <th scope="row">
         {{ $i++ }}
        
       </th>
-      <td>{{ $slider->title	  }} </td>
-      <td>{{ $slider->description  }} </td>
-      <td><img src="{{asset($slider->image) }}" style="width:70px; height:40px;" alt=""> </td>
+      <td>{{ $about->title	  }} </td>
+      <td>{{ $about->short_dis  }} </td>
+      <td> {{ $about->Long_dis  }}</td>
      
     <td> 
-      <a href="{{ url('slider/edit/'.$slider->id) }}" class="btn btn-info">Edit</a>
-      <a href="{{ url('slider/delete/'.$slider->id) }}" class="btn btn bg-danger">Delate</a>
+      <a href="{{ url('about/edit/'.$about->id) }}" class="btn btn-info">Edit</a>
+      <a href="{{ url('about/delete/'.$about->id) }}" class="btn btn bg-danger">Delate</a>
     </td>
     </tr>
     @endforeach

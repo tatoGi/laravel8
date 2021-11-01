@@ -98,7 +98,7 @@
 
   </div>
 
-  <button  type="submit" class="btn btn-primary">Add Brand</button>
+  <button  type="submit" class="btn btn-primary" >Add Brand</button>
 </form>
   </div>
 </div>

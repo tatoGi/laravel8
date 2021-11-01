@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\support\facedes\SoftDelete;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +67,8 @@ Route::get('/home/slider', [HomeController::class, 'Homslider'])->name('home.sli
 Route::get('/add/slider', [HomeController::class, 'addslider'])->name('add.slider');
 Route::post('/store/slider', [HomeController::class, 'storeslider'])->name('store.slider');
 
-
+// Home About Page //
+Route::get('/home/About', [AboutController::class, 'HomeAbout'])->name('home.about');
 
 
 
